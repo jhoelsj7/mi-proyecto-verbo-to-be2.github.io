@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         delay: 100,
         easing: 'ease-out'
     });
-  
+ 
     // Mobile menu handling
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
         });
     }
-  
+ 
     // Smooth scroll with offset
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -29,12 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const headerOffset = 80;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-  
+ 
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
-  
+ 
                 // Close mobile menu if open
                 if (navLinks.classList.contains('active')) {
                     mobileMenuBtn.classList.remove('active');
@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-  
-    // Stats counter animation
+ 
+    // Stats counter animation with formatting
     const startCounters = () => {
         const counters = document.querySelectorAll('.stat-number');
         
@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCounter();
         });
     };
-  
-    // Intersection Observer for counters
+ 
+    // Observer for stats section
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -81,13 +81,13 @@ document.addEventListener('DOMContentLoaded', function() {
         threshold: [0.5],
         rootMargin: '-50px'  
     });
-  
+ 
     const statsSection = document.querySelector('.stats-section');
     if (statsSection) {
         observer.observe(statsSection);
     }
-  
-    // Close mobile menu when clicking outside
+ 
+    // Close mobile menu on outside click
     document.addEventListener('click', (e) => {
         if (navLinks.classList.contains('active') && 
             !navLinks.contains(e.target) && 
@@ -97,15 +97,14 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
         }
     });
-  
-    // Navbar background change on scroll
+ 
+    // Navbar scroll behavior
     const navbar = document.querySelector('.glass-nav');
     let lastScroll = 0;
-  
+ 
     const handleScroll = () => {
         const currentScroll = window.pageYOffset;
-  
-        // Change navbar background on scroll
+ 
         if (currentScroll > 50) {
             navbar.style.background = 'rgba(255, 255, 255, 0.95)';
             navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
@@ -113,20 +112,19 @@ document.addEventListener('DOMContentLoaded', function() {
             navbar.style.background = 'rgba(255, 255, 255, 0.1)';
             navbar.style.boxShadow = 'none';
         }
-  
-        // Hide/show navbar on scroll
+ 
         if (currentScroll > lastScroll && currentScroll > 200) {
             navbar.style.transform = 'translateY(-100%)';
         } else {
             navbar.style.transform = 'translateY(0)';
         }
-  
+ 
         lastScroll = currentScroll;
     };
-  
+ 
     window.addEventListener('scroll', handleScroll);
-  
-    // Pricing cards hover animation
+ 
+    // Pricing cards interaction
     const pricingCards = document.querySelectorAll('.pricing-card');
     pricingCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
@@ -138,43 +136,33 @@ document.addEventListener('DOMContentLoaded', function() {
             pricingCards.forEach(c => c.style.transform = 'scale(1)');
         });
     });
-  
-    // Particle effect for hero section
+ 
+    // Particle animation
     const createParticle = () => {
         const particles = document.querySelector('.particles');
         const particle = document.createElement('div');
         particle.className = 'particle';
-        
-        // Random position
         particle.style.left = Math.random() * 100 + 'vw';
         particle.style.top = Math.random() * 100 + 'vh';
-        
-        // Random size
         const size = Math.random() * 5 + 2;
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
-        
-        // Random animation duration
         particle.style.animationDuration = Math.random() * 2 + 3 + 's';
         
         particles.appendChild(particle);
         
-        // Remove particle after animation
-        setTimeout(() => {
-            particle.remove();
-        }, 5000);
+        setTimeout(() => particle.remove(), 5000);
     };
-  
-    // Create particles periodically
+ 
     setInterval(createParticle, 200);
-  
-    // Floating elements animation
+ 
+    // Floating elements
     const floatingElements = document.querySelectorAll('.floating-text');
     floatingElements.forEach((el, index) => {
         el.style.animation = `floatText ${3 + index * 0.5}s ease-in-out infinite ${index * 0.5}s`;
     });
-  
-    // Smooth reveal animation for sections
+ 
+    // Section reveal animation
     const revealSections = document.querySelectorAll('section');
     const revealSection = (entries, observer) => {
         entries.forEach(entry => {
@@ -184,18 +172,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     };
-  
+ 
     const sectionObserver = new IntersectionObserver(revealSection, {
         root: null,
-        threshold: 0.15,
+        threshold: 0.15
     });
-  
+ 
     revealSections.forEach(section => {
         section.classList.add('section--hidden');
         sectionObserver.observe(section);
     });
-  
-    // Lazy loading for images
+ 
+    // Lazy loading images
     const lazyImages = document.querySelectorAll('img[data-src]');
     const loadImg = (entries, observer) => {
         entries.forEach(entry => {
@@ -208,20 +196,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     };
-  
+ 
     const imgObserver = new IntersectionObserver(loadImg, {
         root: null,
         threshold: 0,
         rootMargin: '50px'
     });
-  
+ 
     lazyImages.forEach(img => imgObserver.observe(img));
-  
-    // Parallax effect for hero section
+ 
+    // Parallax effect
     const heroContent = document.querySelector('.hero-content');
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         heroContent.style.transform = `translateY(${scrolled * 0.4}px)`;
     });
-  });
-  
+ });
