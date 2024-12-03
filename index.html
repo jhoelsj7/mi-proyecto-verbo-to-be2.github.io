@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="glass-nav">
@@ -29,8 +30,9 @@
     </nav>
 
     <header id="inicio" class="hero">
+        <div class="particles"></div>
         <div class="hero-content">
-            <h1>Domina el Verbo "To Be"</h1>
+            <h1>Domina el Verbo <span class="highlight">"To Be"</span></h1>
             <p class="hero-subtitle">La forma más efectiva de aprender el verbo más importante del inglés</p>
             <div class="hero-features">
                 <div class="hero-feature">
@@ -46,27 +48,32 @@
                     <span>Aprende a tu ritmo</span>
                 </div>
             </div>
-            
+
         </div>
         <div class="hero-image">
-            <img src="Screenshot_2024-10-24-10-46-41-329_com.android.chrome-edit (1).jpg" alt="MasterBe Logo" class="hero-logo">
-            <span class="floating-text am">Am</span>
-            <span class="floating-text is">Is</span>
-            <span class="floating-text are">Are</span>
+            <div class="floating-container">
+                <img src="Screenshot_2024-10-24-10-46-41-329_com.android.chrome-edit (1).jpg" alt="MasterBe Logo" class="hero-logo">
+                <span class="floating-text am">Am</span>
+                <span class="floating-text is">Is</span>
+                <span class="floating-text are">Are</span>
+            </div>
         </div>
     </header>
 
     <section class="stats-section">
         <div class="stats-container">
-            <div class="stat-item">
+            <div class="stat-item" data-aos="fade-up">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
                 <div class="stat-number" data-target="5000">0</div>
                 <div class="stat-label">Estudiantes Satisfechos</div>
             </div>
-            <div class="stat-item">
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-icon"><i class="fas fa-tasks"></i></div>
                 <div class="stat-number" data-target="10000">0</div>
                 <div class="stat-label">Ejercicios Realizados</div>
             </div>
-            <div class="stat-item">
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
                 <div class="stat-number" data-target="95">0</div>
                 <div class="stat-label">% Efectividad</div>
             </div>
@@ -74,7 +81,7 @@
     </section>
 
     <section id="features" class="features-section">
-        <h2 data-aos="fade-up">¿Por qué elegir MasterBe?</h2>
+        <h2 data-aos="fade-up">¿Por qué elegir <span class="highlight">MasterBe</span>?</h2>
         <div class="features-grid">
             <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
                 <div class="icon">🤖</div>
@@ -163,33 +170,31 @@
     </section>
     
     <section id="contacto" class="social-section">
-        <h2>Contáctanos</h2>
+        <h2>Síguenos en Redes Sociales</h2>
         <div class="social-links">
-            <a href="https://www.instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.whatsapp.com" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/masterbe_/profilecard/?igsh=MXVxbWM3ZGhmejdoZA==" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1J7HeRhgQH/" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@masterbe_?_t=8rRZBniqsXY&_r=1" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
         </div>
     </section>
 
     <footer>
-        <p>© 2024 MasterBe. Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <p>© 2024 MasterBe. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Términos y Condiciones</a>
+                <a href="#" class="footer-link">Política de Privacidad</a>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Inicializar AOS (Animaciones en Scroll)
-        AOS.init();
-
-        // Función de desplazamiento suave
-        document.querySelectorAll('.nav-links a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                document.getElementById(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
         });
     </script>
 </body>
